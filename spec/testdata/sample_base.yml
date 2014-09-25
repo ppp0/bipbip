@@ -1,5 +1,7 @@
 logfile: /tmp/bipbip.log
-loglevel: INFO
+loglevel: DEBUG
+logfile_days_to_keep: 5
+logfile_maxsize: 1024*1024
 frequency: 15
 include: sample_base_includes.d/
 

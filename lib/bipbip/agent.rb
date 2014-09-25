@@ -44,13 +44,15 @@ module Bipbip
       config = {
           'logfile' => STDOUT,
           'loglevel' => 'INFO',
+          'logfile_days_to_keep' => 7,
+          'logfile_maxsize' => 16*1024*1024,
           'frequency' => 60,
           'include' => nil,
           'services' => [],
           'services' => [],
       }.merge(config)
 
-      Bipbip.logger = Logger.new(config['logfile'])
+      Bipbip.logger = Logger.new(config['logfile'], config['logfile_days_to_keep'], config['logfile_maxsize'])
       Bipbip.logger.level = Logger::const_get(config['loglevel'])
 
       services = config['services'].to_a
