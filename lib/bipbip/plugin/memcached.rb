@@ -8,9 +8,9 @@ module Bipbip
 
     def metrics_schema
       [
-          {:name => 'cmd_get', :type => 'counter'},
-          {:name => 'cmd_set', :type => 'counter'},
-          {:name => 'get_misses', :type => 'counter'},
+          {:name => 'cmd_get', :type => 'gauge'},
+          {:name => 'cmd_set', :type => 'gauge'},
+          {:name => 'get_misses', :type => 'gauge'},
           {:name => 'bytes', :type => 'gauge', :unit => 'b'},
       ]
     end

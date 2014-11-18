@@ -2,33 +2,22 @@ require 'mongo'
 
 module Bipbip
 
-  class Plugin::Mongodb < Plugin
+  class Plugin::Elasticsearch < Plugin
 
     def metrics_schema
       [
           {:name => 'flushing_last_ms', :type => 'gauge', :unit => 'ms'},
-          {:name => 'btree_misses', :type => 'gauge', :unit => 'misses'},
-          {:name => 'op_inserts', :type => 'gauge'},
-          {:name => 'op_queries', :type => 'gauge'},
-          {:name => 'op_updates', :type => 'gauge'},
-          {:name => 'op_deletes', :type => 'gauge'},
-          {:name => 'op_getmores', :type => 'gauge'},
-          {:name => 'op_commands', :type => 'gauge'},
-          {:name => 'connections_current', :type => 'gauge'},
-          {:name => 'mem_resident', :type => 'gauge', :unit => 'MB'},
-          {:name => 'mem_mapped', :type => 'gauge', :unit => 'MB'},
-          {:name => 'mem_pagefaults', :type => 'gauge', :unit => 'faults'},
-          {:name => 'globalLock_currentQueue', :type => 'gauge'},
       ]
     end
 
     def monitor
       options = {
           'hostname' => 'localhost',
-          'port' => 27017,
+          'port' =>,
           'username' => nil,
           'password' => nil
       }.merge(config)
+
       connection = Mongo::MongoClient.new(options['hostname'], options['port'], {:op_timeout => 2, :slave_ok => true})
       mongo = connection.db('admin')
       mongo.authenticate(options['username'], options['password']) unless options['password'].nil?

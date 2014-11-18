@@ -7,9 +7,9 @@ module Bipbip
 
     def metrics_schema
       schema_list = [
-          {:name => 'num_workers', :type => 'counter', :unit => 'Workers'},
-          {:name => 'num_idle_workers', :type => 'counter', :unit => 'Workers'},
-          {:name => 'num_active_workers', :type => 'counter', :unit => 'Workers'},
+          {:name => 'num_workers', :type => 'gauge', :unit => 'Workers'},
+          {:name => 'num_idle_workers', :type => 'gauge', :unit => 'Workers'},
+          {:name => 'num_active_workers', :type => 'gauge', :unit => 'Workers'},
       ]
 
       with_resque_connection do

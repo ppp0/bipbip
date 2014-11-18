@@ -4,7 +4,7 @@ module Bipbip
 
     def metrics_schema
       [
-          {:name => 'connections_requested', :type => 'counter', :unit => 'Requests'},
+          {:name => 'connections_requested', :type => 'gauge', :unit => 'Requests'},
       ]
     end
 
